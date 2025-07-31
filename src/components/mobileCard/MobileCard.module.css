@@ -1,0 +1,24 @@
+.cardContainer {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border: 0.03em solid var(--foreground);
+  background-color: #fff;
+  padding: 1em;
+}
+
+.cardTitle {
+  color: var(--text-secundary);
+}
+
+.cardSubTitle {
+  color: var(--text-primary);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
