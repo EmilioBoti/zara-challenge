@@ -1,11 +1,10 @@
 .cardContainer {
-  width: fit-content;
-  height: fit-content;
   display: flex;
   flex-direction: column;
-  border: 0.03em solid var(--foreground);
+  border: 0.02em solid var(--text-secundary);
   background-color: #fff;
   padding: 1em;
+  cursor: pointer;
 }
 
 .cardTitle {

@@ -1,0 +1,28 @@
+.mainContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.container {
+  padding: 3em 1em;
+  overflow-y: auto;
+}
+
+/* 🟢 Desktop — 1024px and up */
+@media (min-width: 1024px) {
+  
+  .container {
+    padding: 3em 6em;
+  }
+
+}
+
+/* 🟡 Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .container {
+    padding: 3em 3em;
+  }
+
+}

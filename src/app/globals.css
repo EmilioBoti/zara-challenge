@@ -2,7 +2,11 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
+  
+  /* APP COLORS */
+  --text-primary: #212121;
+  --text-secundary: #79736D;
 }
 
 @theme inline {
@@ -14,13 +18,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fff;
+    --foreground: #212121;
+    --desktop-screen-size: min-width: 1024px;
+    --tablet-min-screen-size: min-width: 768px;
+    --tablet-max-screen-size: min-width: 1023px
   }
 }
 
-body {
+html, body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }

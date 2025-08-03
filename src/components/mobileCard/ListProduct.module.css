@@ -1,0 +1,30 @@
+.productContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+}
+
+/* 🟢 Desktop — 1024px and up */
+@media (min-width: 1024px) {
+  
+  .container {
+    padding: 3em 3em;
+  }
+
+  .productContainer {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+}
+
+/* 🟡 Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .container {
+    padding: 3em 2em;
+  }
+
+  .productContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}

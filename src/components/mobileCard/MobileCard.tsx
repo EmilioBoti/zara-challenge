@@ -15,6 +15,7 @@ export default function MobileCard({ product }: MobileCardProps) {
       className={styles.cardContainer}
     >
       <Image
+        style={{alignSelf: "center"}}
         src={product.imageUrl}
         width={300}
         height={300}
