@@ -14,15 +14,22 @@ export default function MobileCard({ product }: MobileCardProps) {
     <motion.div
       className={styles.cardContainer}
     >
-      <Image
-        style={{alignSelf: "center"}}
-        src={product.imageUrl}
-        width={300}
-        height={300}
-        alt='mobile image'
-        unoptimized
-      
-      />
+      <div className={styles.productImageContainer}>
+        <Image
+          className={styles.productImage}
+          style={{
+            width: 'auto',
+            height: 'auto',
+            aspectRatio: '1/1',
+            objectFit: 'contain'
+          }}
+          src={product.imageUrl}
+          width={300}
+          height={300}
+          alt={product.name}
+          unoptimized
+        />
+      </div>
       <div className={styles.cardInfo}>
         <div>
           <div className={styles.cardTitle}>{product.brand}</div>
