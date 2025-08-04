@@ -8,6 +8,7 @@ import ListProduct from '../components/mobileCard/ListProduct'
 import styles from './Home.module.css'
 import useProduct from '../hooks/useProduct'
 import { useEffect } from 'react'
+import { Product } from '@/models/appModels/Product'
 
 
 export default function Home() {
@@ -27,7 +28,10 @@ export default function Home() {
         onValueChanged={(value: string) => { getProduct(value) }}
       />
       <motion.div className={styles.container}>
-        <ListProduct items={productsState.products}/>
+        <ListProduct 
+          items={productsState.products}
+          onClickEvent={ (product: Product) => console.log(product.name)}
+          />
       </motion.div>
     </motion.main>
   );

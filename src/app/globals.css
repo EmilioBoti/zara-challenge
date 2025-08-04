@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #ffffff;
+    /* APP COLORS */
+  --black: #000000;
+  --white: #ffffff;
+
+  --background: var(--white);
+  --foreground: var(--white);
   
-  /* APP COLORS */
   --text-primary: #212121;
+  --text-dark-primary: #ffffff;
   --text-secundary: #79736D;
 
   --border-width: 0.02em;
   --border-color: #79736D;
+
+  --desktop-screen-size: min-width: 1024px;
+  --tablet-min-screen-size: min-width: 768px;
+  --tablet-max-screen-size: min-width: 1023px;
+
 }
 
 @theme inline {
@@ -21,11 +30,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fff;
+    --background: #ffffff;
     --foreground: #212121;
-    --desktop-screen-size: min-width: 1024px;
-    --tablet-min-screen-size: min-width: 768px;
-    --tablet-max-screen-size: min-width: 1023px
   }
 }
 

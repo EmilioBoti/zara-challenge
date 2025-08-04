@@ -2,16 +2,19 @@
 import styles from './MobileCard.module.css'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { Product } from '../../models/appModels/Product'
 
 
 type MobileCardProps = {
-  product: Product
+  product: Product,
+  onClickEvent: (product: Product) => void
 }
 
-export default function MobileCard({ product }: MobileCardProps) {
+export default function MobileCard({ product, onClickEvent }: MobileCardProps) {
   return (
     <motion.div
       className={styles.cardContainer}
+      onClick={(e) => onClickEvent(product)}
     >
       <div className={styles.productImageContainer}>
         <Image
