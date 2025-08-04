@@ -7,6 +7,9 @@
   /* APP COLORS */
   --text-primary: #212121;
   --text-secundary: #79736D;
+
+  --border-width: 0.02em;
+  --border-color: #79736D;
 }
 
 @theme inline {

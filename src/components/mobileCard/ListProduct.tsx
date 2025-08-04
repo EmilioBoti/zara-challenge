@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
 import MobileCard from '../mobileCard/MobileCard'
 import styles from './ListProduct.module.css'
+
+import { Product } from '../../models/appModels/Product'
 
 
 type ListProductProps = {

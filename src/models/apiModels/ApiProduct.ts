@@ -1,4 +1,4 @@
-interface Product {
+export interface ApiProduct {
   id: string,
   brand: string,
   name: string,

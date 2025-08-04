@@ -2,7 +2,6 @@
 import styles from './MobileCard.module.css'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 
 
 type MobileCardProps = {
