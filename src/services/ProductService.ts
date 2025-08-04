@@ -1,6 +1,7 @@
 
 import { ApiService } from './ApiService'
 import { ApiProduct } from '../models/apiModels/ApiProduct'
+import { ApiProductDetail } from '../models/apiModels/ApiProductDetail'
 
 type ProductProps = {
   id?: string
@@ -22,7 +23,11 @@ export class ProductService {
 
   async getProduct(params: ProductProps): Promise<ApiProduct[]> {
     return this.getAllProducts(params)
-  } 
+  }
+
+  async getProductDetail({ id }: ProductProps): Promise<ApiProductDetail> {
+    return this.apiService.get<ApiProductDetail>(`/products/${id}`)
+  }
 
   private params({ id, limit, offset }: ProductProps): string {
     const params = new URLSearchParams()

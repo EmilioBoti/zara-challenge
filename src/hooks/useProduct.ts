@@ -1,7 +1,6 @@
 import { useState } from "react"
 
 import { ProductService } from '../services/ProductService'
-import { Product } from '../models/appModels/Product'
 import { ProductState } from '../models/uiState/ProductState'
 import { parserApiProduct } from '../utils/mappers/productMapper'
 
