@@ -1,0 +1,41 @@
+.storageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.storageTittle {
+  font-size: 0.75em;
+  font-weight: 300;
+}
+
+.storageOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.storage {
+  width: 90px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+
+/* Desktop — 1024px and up */
+@media (min-width: 1024px) {
+  
+}
+
+/* Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+
+}

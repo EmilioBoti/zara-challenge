@@ -8,9 +8,9 @@ import { ApiProduct } from '../../models/apiModels/ApiProduct'
 import { Product } from '../../models/appModels/Product'
 import { 
   ProductDetail,
-  Specs, 
-  ColorOptions, 
-  StorageOptions 
+  Spec, 
+  ColorOption, 
+  StorageOption
 } from '@/models/appModels/ProductDetail'
 
 export const parserApiProduct = (apiProducts: ApiProduct[]): Product[] => {
@@ -41,8 +41,8 @@ export const parseApiProductDetail = (apiProductDetail: ApiProductDetail): Produ
    )
 }
 
-const parseApiSpecs = (apiSpecs: ApiSpecs): Specs => {
-  return new Specs(
+const parseApiSpecs = (apiSpecs: ApiSpecs): Spec => {
+  return new Spec(
     apiSpecs.screen,
     apiSpecs.resolution,
     apiSpecs.processor,
@@ -54,9 +54,9 @@ const parseApiSpecs = (apiSpecs: ApiSpecs): Specs => {
   )
 }
 
-const parseApiColorOptions = (apiColorOptions: ApiColorOptions[]): ColorOptions[] => {
+const parseApiColorOptions = (apiColorOptions: ApiColorOptions[]): ColorOption[] => {
   return apiColorOptions.map( apiColorOption => {
-      return new ColorOptions(
+      return new ColorOption(
         apiColorOption.name,
         apiColorOption.hexCode,
         apiColorOption.imageUrl
@@ -65,9 +65,9 @@ const parseApiColorOptions = (apiColorOptions: ApiColorOptions[]): ColorOptions[
   )
 }
 
-const parseApiStorageOptions = (apiStorageOptions: ApiStorageOptions[]): StorageOptions[] => {
+const parseApiStorageOptions = (apiStorageOptions: ApiStorageOptions[]): StorageOption[] => {
   return apiStorageOptions.map( storegeOption => {
-    return new StorageOptions(
+    return new StorageOption(
       storegeOption.capacity,
       storegeOption.price
     )

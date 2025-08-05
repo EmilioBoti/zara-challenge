@@ -1,6 +1,6 @@
 import { ApiProduct } from "../apiModels/ApiProduct"
 
-export interface ApiSpecs {
+export interface ApiSpec {
   screen: string,
   resolution: string,
   processor: string,
@@ -11,13 +11,13 @@ export interface ApiSpecs {
   screenRefreshRate: string
 }
 
-export interface ApiColorOptions {
+export interface ApiColorOption {
   name: string,
   hexCode: string,
   imageUrl: string
 }
 
-export interface ApiStorageOptions {
+export interface ApiStorageOption {
   capacity: string,
   price: number
 }
@@ -29,8 +29,8 @@ export interface ApiProductDetail {
   description: string,
   basePrice: number,
   rating: number,
-  specs: ApiSpecs,
-  colorOptions: ApiColorOptions[],
-  storageOptions: ApiStorageOptions[],
+  specs: ApiSpec,
+  colorOptions: ApiColorOption[],
+  storageOptions: ApiStorageOption[],
   similarProducts: ApiProduct[]
 };

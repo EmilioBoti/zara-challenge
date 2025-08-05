@@ -4,51 +4,51 @@ import { Product } from '../appModels/Product'
 export class ProductDetail {
 
   constructor(
-      public id: string,
-      public brand: string,
-      public name: string,
-      public description: string,
-      public basePrice: number,
-      public rating: number,
-      public specs: Specs,
-      public colorOptions: ColorOptions[],
-      public storageOptions: StorageOptions[],
-      public similarProducts: Product[]
+      public id: string = '',
+      public brand: string = '',
+      public name: string = '',
+      public description: string = '',
+      public basePrice: number = 0,
+      public rating: number = 0,
+      public specs: Spec = new Spec(),
+      public colorOptions: ColorOption[] = [],
+      public storageOptions: StorageOption[] = [],
+      public similarProducts: Product[] = []
   ) {
 
   }
 
 }
 
-export class Specs {
+export class Spec {
 
   constructor(
-    public screen: string,
-    public resolution: string,
-    public processor: string,
-    public mainCamera: string,
-    public selfieCamera: string,
-    public battery: string,
-    public os: string,
-    public screenRefreshRate: string
+    public screen: string = '',
+    public resolution: string = '',
+    public processor: string = '',
+    public mainCamera: string = '',
+    public selfieCamera: string = '',
+    public battery: string = '',
+    public os: string = '',
+    public screenRefreshRate: string = ''
   ){}
 
 }
 
-export class ColorOptions {
+export class ColorOption {
 
   constructor(
-    public name: string,
-    public hexCode: string,
-    public imageUrl: string
+    public name: string = '',
+    public hexCode: string = '',
+    public imageUrl: string = ''
   ){}
 
 }
 
-export class StorageOptions {
+export class StorageOption {
   constructor(
-    public capacity: string,
-    public price: number
+    public capacity: string = '',
+    public price: number = 0
   ){}
 }
 
