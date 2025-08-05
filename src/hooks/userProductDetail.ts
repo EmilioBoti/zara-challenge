@@ -47,10 +47,6 @@ export default function userProductDetail() {
     console.log(productDetailState.currentStorage)
   }
 
-  const calculatePrice = () => {
-
-  }
-
   const getProductDetail = async (id: string) => {
     try {
       const result = await productService.getProductDetail({id: id})
@@ -60,7 +56,7 @@ export default function userProductDetail() {
           product: parsedResult,
           currentPrice: parsedResult.basePrice,
           currentColor: (parsedResult.colorOptions.length > 0) ? parsedResult.colorOptions[0] : undefined,
-          currentStorage: (parsedResult.storageOptions.length > 0) ? parsedResult.storageOptions[0] : undefined
+          currentStorage: undefined
         }
       )
     } catch(error) {

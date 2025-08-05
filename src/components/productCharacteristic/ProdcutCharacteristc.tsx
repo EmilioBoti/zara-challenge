@@ -33,7 +33,7 @@ export default function ProdcutCharacteristc({
         unoptimized
         />
       )}
-        <div className={styles.infoContent}>
+      <div className={styles.infoContent}>
         <div>
           <h2 className={styles.productName}>{productDetailState.product.brand} - {productDetailState.product.name}</h2>
           <p>From {productDetailState.currentPrice} EUR</p>
@@ -50,11 +50,10 @@ export default function ProdcutCharacteristc({
         />
         <button
           disabled={isDisabledButton}
-          className={styles.addToCartButton}
-          style={{opacity: (isDisabledButton) ? 0.3 : 1 }}
+          className={`${styles.addToCartButton} ${(isDisabledButton) ? styles.idle : styles.active}`}
           onClick={(e)=> addToCartButtonEvent() }
           >Add to Cart</button>
-        </div>
+      </div>
     </div>
   )  
 }

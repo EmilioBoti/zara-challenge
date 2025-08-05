@@ -10,7 +10,7 @@
 .infoContent {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 1em;
   padding: .4em 1em;
@@ -52,4 +52,37 @@
   color: var(--white);
   background-color: var(--black);
   cursor: pointer;
+}
+
+.active {
+  opacity: 1;
+}
+
+.idle {
+  opacity: .3;
+}
+
+
+/* Desktop — 1024px and up */
+@media (min-width: 1024px) {
+
+  .productSelection {
+    width: 50%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 6em;
+  }
+
+}
+
+/* Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+  .productSelection {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+  }
+
 }
