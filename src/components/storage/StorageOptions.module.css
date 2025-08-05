@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.selected {
+  border: 1px solid var(--black);
+}
+
 
 /* Desktop — 1024px and up */
 @media (min-width: 1024px) {

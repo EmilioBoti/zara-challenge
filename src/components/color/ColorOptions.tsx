@@ -2,7 +2,6 @@
 
 import { ColorOption } from '@/models/appModels/ProductDetail'
 import styles from './ColorOption.module.css'
-import { useState } from 'react'
 
 
 type ColorOptionsProps = {
@@ -17,15 +16,16 @@ export default function ColorOptions({
   onColorSelected
  }: ColorOptionsProps
 ) {
-
   return (
     <div className={styles.colorsContainer}>
       <h2 className={styles.colorsTittle}>COLOR. PICK YOUR FAVOURITE.</h2>
       <ul className={styles.colorOptions}>
         {colorOptions.map(( (colorOption, index) => (
-          <li key={index} className={styles.colorOption} onClick={(e) => {
-            onColorSelected(colorOption)
-          }}>
+          <li 
+            key={index} 
+            className={`${styles.colorOption} ${colorSelected?.hexCode === colorOption.hexCode ? styles.selected : ''}`} 
+            onClick={(e) => { onColorSelected(colorOption) }}
+          >
             <div className={styles.color} style={{backgroundColor: colorOption.hexCode}}></div>
           </li>
         )))}
