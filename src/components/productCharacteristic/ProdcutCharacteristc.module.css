@@ -1,0 +1,55 @@
+.productSelection {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2em;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 1em;
+  padding: .4em 1em;
+}
+
+.productName {
+  color: var(--black);
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+.productPrice {
+  font-size: 0.875em;
+  font-weight: 300;
+}
+
+.storageOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.storage {
+  width: 90px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.addToCartButton {
+  width: 100%;
+  padding: 1em;
+  color: var(--white);
+  background-color: var(--black);
+  cursor: pointer;
+}
