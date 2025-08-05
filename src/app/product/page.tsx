@@ -1,15 +1,12 @@
 'use client'
 import { motion  } from 'framer-motion'
 import Header from '../../components/header/Header'
-import StorageOptions from '../../components/storage/StorageOption'
-import ColorOptions from '../../components/color/ColorOptions'
 import ProdcutCharacteristc from '../../components/productCharacteristic/ProdcutCharacteristc'
+import ProductSpecification from '../../components/productSpecification/ProductSpecification'
 import styles from './ProductDetail.module.css'
-import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import userProductDetail from '../../hooks/userProductDetail'
-import { ColorOption, StorageOption } from '@/models/appModels/ProductDetail'
 
 
 export default function ProductDetail() {
@@ -41,7 +38,9 @@ export default function ProductDetail() {
           changeColor={changeColor}
           addToCartButtonEvent={addToCartButtonEvent}
         />
-        <div>Box 2</div>
+        <ProductSpecification
+          specification={productDetailState.product.getSpeces()}
+        />
         <div>Box 3</div>
       </motion.div>
     </motion.main>

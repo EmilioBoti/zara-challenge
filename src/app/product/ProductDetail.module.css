@@ -12,6 +12,23 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 4em;
   padding: 7em 1em 1em 1em;
   overflow-y: auto;
+}
+
+
+/* Desktop — 1024px and up */
+@media (min-width: 1024px) {
+
+  .mainContent {
+    gap: 10em;
+  }
+
+}
+
+/* Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+
 }

@@ -14,10 +14,34 @@ export class ProductDetail {
       public colorOptions: ColorOption[] = [],
       public storageOptions: StorageOption[] = [],
       public similarProducts: Product[] = []
-  ) {
+  ) {}
 
+  getSpeces(): SpecItem[] {
+    const specsNames: SpecItem[] = []
+    specsNames.push(
+      { name: "brand", value: this.brand },
+      { name: "name", value: this.name },
+      { name: "description", value: this.description },
+      { name: "screen", value: this.specs.screen },
+      { name: "resolution", value: this.specs.resolution },
+      { name: "processor", value: this.specs.processor },
+      { name: "mainCamera", value: this.specs.mainCamera },
+      { name: "selfieCamera", value: this.specs.selfieCamera },
+      { name: "battery", value: this.specs.battery },
+      { name: "os", value: this.specs.os },
+      { name: "screen Refresh Rate", value: this.specs.screenRefreshRate },
+    )
+    return specsNames
   }
 
+
+}
+
+export class SpecItem {
+  constructor(
+    public name: string,
+    public value: string
+  ){}
 }
 
 export class Spec {
