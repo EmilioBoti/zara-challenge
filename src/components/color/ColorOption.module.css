@@ -1,0 +1,36 @@
+.colorsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.colorsTittle {
+  font-size: 0.75em;
+  font-weight: 300;
+}
+
+.colorOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  overflow-x: auto;
+}
+
+.colorOption {
+  width: 24px;
+  height: 24px;
+  padding: .08em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1.3px solid var(--border-color);
+  margin: 0px;
+  cursor: pointer;
+}
+
+.color {
+  width: 100%;
+  height: 100%;
+}
