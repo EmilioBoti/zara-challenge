@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 import styles from './Header.module.css'
+import useNavigation from '../../hooks/navigation/useNavigation'
+import { NavBack } from '../../hooks/navigation/useNavigation'
 
 type HeaderProps = {
   itemCount: number
@@ -11,6 +13,7 @@ type HeaderProps = {
 }
 
 export default function Header({ itemCount = 0, isBackVisible = false}: HeaderProps) {
+  const { navigateTo } = useNavigation()
   return (
     <motion.header 
       className={styles.headerContainer}
@@ -46,7 +49,7 @@ export default function Header({ itemCount = 0, isBackVisible = false}: HeaderPr
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className={styles.backContainer}>
+          <div className={styles.backContainer} onClick={(e) => navigateTo(new NavBack())} >
             <Image
               style={{
                 width: "auto",

@@ -1,16 +1,24 @@
 'use client'
+
 import { motion  } from 'framer-motion'
+import { Product } from '../../models/appModels/Product'
 import Header from '../../components/header/Header'
 import ProdcutCharacteristc from '../../components/productCharacteristic/ProdcutCharacteristc'
 import ProductSpecification from '../../components/productSpecification/ProductSpecification'
+import MobileCard from '../../components/mobileCard/MobileCard'
 import styles from './ProductDetail.module.css'
 import { useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import userProductDetail from '../../hooks/userProductDetail'
+import useNavigation from '../../hooks/navigation/useNavigation'
+import { NavProductDetail } from '../../hooks/navigation/useNavigation'
 
 
 export default function ProductDetail() {
+  const content = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
+  const { navigateTo } = useNavigation()
+  const productId = searchParams.get('id')
 
   const { 
     productDetailState,
@@ -21,16 +29,24 @@ export default function ProductDetail() {
     changeStorage
    } = userProductDetail()
 
-  const productId = searchParams.get('id')
-
   useEffect(() => {
-    if(productId) getProductDetail(productId)
-  },[])
+    if(productId) { 
+      getProductDetail(productId)
+      scrollToTop()
+    }
+  },[productId])
+
+  const scrollToTop = () => {
+    content.current?.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 
   return (
     <motion.main className={styles.content}>
       <Header itemCount={0} isBackVisible={true}/> 
-      <motion.div className={styles.mainContent}>
+      <motion.div ref={content} className={styles.mainContent}>
         <ProdcutCharacteristc
           productDetailState={productDetailState}
           isDisabledButton={isDisabledButton}
@@ -41,7 +57,25 @@ export default function ProductDetail() {
         <ProductSpecification
           specification={productDetailState.product.getSpeces()}
         />
-        <div>Box 3</div>
+        <div className={styles.similarContent}>
+          <div className={styles.similiarTitleContainer}>
+            <h2 className={styles.similarTitle}>SIMILAR ITEMS</h2>
+          </div>
+          <ul className={styles.similarProducts}>
+            { productDetailState.product.similarProducts.map((product, index) => (
+              <li key={index}>
+                <MobileCard
+                  width='320px'
+                  product={product}
+                  onClickEvent={(product: Product) => { 
+                    navigateTo(new NavProductDetail(product.id))
+                   } }
+                />
+              </li>
+            ))}
+          </ul>
+          <div></div>
+        </div>
       </motion.div>
     </motion.main>
   )

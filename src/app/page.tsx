@@ -9,10 +9,17 @@ import styles from './Home.module.css'
 import useProduct from '../hooks/useProduct'
 import { useEffect } from 'react'
 import { Product } from '@/models/appModels/Product'
+import useNavigation from '../hooks/navigation/useNavigation'
+import { NavProductDetail } from '../hooks/navigation/useNavigation'
 
 
 export default function Home() {
-  const { productsState, getProduct, getAllProducts } = useProduct()
+  const { navigateTo } = useNavigation()
+  const { 
+    productsState,
+    getProduct,
+    getAllProducts
+   } = useProduct()
 
   useEffect(() => {
     getAllProducts()
@@ -30,7 +37,7 @@ export default function Home() {
       <motion.div className={styles.container}>
         <ListProduct 
           items={productsState.products}
-          onClickEvent={ (product: Product) => console.log(product.name)}
+          onClickEvent={ (product: Product) => { navigateTo(new NavProductDetail(product.id)) } }
           />
       </motion.div>
     </motion.main>
