@@ -1,12 +1,15 @@
 import { ColorOption, ProductDetail, StorageOption } from "@/models/appModels/ProductDetail";
+import { ProductStore } from "@/models/appModels/ProductStore";
 import { ProductDetailState } from '../models/uiState/ProductDetailState'
 import { useState, useEffect } from "react";
 
 import { ProductService } from '../services/ProductService'
 import { parseApiProductDetail } from '../utils/mappers/productMapper'
+import useCartProduct from "./useCartProduct";
 
 export default function userProductDetail() {
   const productService = new ProductService()
+  const { storeProduct } = useCartProduct()
   const [productDetailState, setProductDetailState] = useState<ProductDetailState>({
     product: new ProductDetail(),
     currentPrice: 0,
@@ -16,12 +19,12 @@ export default function userProductDetail() {
   const [isDisabledButton, setIsDisabledButton] = useState(true);
 
   useEffect(() => {
-    let disable = !(productDetailState.currentColor !== undefined && productDetailState.currentStorage !== undefined)
+    let disable = !isValidProduct(productDetailState)
     setIsDisabledButton(disable)
   },[
     productDetailState.currentColor,
     productDetailState.currentStorage
-  ]) 
+  ])
 
   const changeColor = (colorOption: ColorOption) => {
     setProductDetailState(
@@ -43,12 +46,28 @@ export default function userProductDetail() {
   }
 
   const addToCartButtonEvent = () => {
-    console.log(productDetailState.currentColor)
-    console.log(productDetailState.currentStorage)
+    if(isValidProduct(productDetailState)) {
+      const productStore: ProductStore = {
+        id: productDetailState.product.id,
+        brand: productDetailState.product.brand,
+        name: productDetailState.product.name,
+        basePrice: productDetailState.product.basePrice,
+        storageOption: productDetailState.currentStorage!!,
+        colorOption: productDetailState.currentColor!!,
+        imageUrl: productDetailState.currentColor?.imageUrl!!
+      }
+      storeProduct(productStore)
+    }
+
+  }
+
+  const isValidProduct = (product: ProductDetailState): boolean => {
+    return product.currentColor !== undefined && product.currentStorage !== undefined
   }
 
   const getProductDetail = async (id: string) => {
     try {
+      console.log("loading...")
       const result = await productService.getProductDetail({id: id})
       const parsedResult = parseApiProductDetail(result)
       setProductDetailState(
@@ -61,6 +80,8 @@ export default function userProductDetail() {
       )
     } catch(error) {
       console.log(error)
+    } finally {
+      console.log("loaded")
     }
   }
 
