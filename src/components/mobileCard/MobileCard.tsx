@@ -1,7 +1,6 @@
 
 import styles from './MobileCard.module.css'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Product } from '../../models/appModels/Product'
 
 type MobileCardProps = {
@@ -16,7 +15,6 @@ export default function MobileCard({
   onClickEvent
  }: MobileCardProps
 ) {
-
   return (
     <motion.div
       className={styles.cardContainer}
@@ -24,7 +22,7 @@ export default function MobileCard({
       onClick={(e) => { onClickEvent(product) }}
     >
       <div className={styles.productImageContainer}>
-        <Image
+        <img
           className={styles.productImage}
           style={{
             width: 'auto',
@@ -33,10 +31,7 @@ export default function MobileCard({
             objectFit: 'contain'
           }}
           src={product.imageUrl}
-          width={300}
-          height={300}
           alt={product.name}
-          unoptimized
         />
       </div>
       <div className={styles.cardInfo}>

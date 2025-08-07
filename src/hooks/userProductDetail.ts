@@ -73,7 +73,7 @@ export default function userProductDetail() {
   }
 
   const isValidProduct = (product: ProductDetailState): boolean => {
-    return product.currentColor !== undefined && product.currentStorage !== undefined
+    return (product.currentColor !== undefined && product.currentStorage !== undefined)
   }
 
   const getProductDetail = async (id: string) => {

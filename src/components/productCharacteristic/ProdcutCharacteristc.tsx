@@ -31,12 +31,9 @@ export default function ProdcutCharacteristc({
       transition={{ duration: 0.4 }}
     >
       { productDetailState.currentColor && (
-        <Image
+        <img
         src={productDetailState.currentColor.imageUrl}
-        width={400}
-        height={400}
         alt={productDetailState.product.name}
-        unoptimized
         />
       )}
       <div className={styles.infoContent}>
