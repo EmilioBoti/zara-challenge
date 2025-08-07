@@ -18,14 +18,14 @@ export default function ProductSpecification({
     > 
       <div style={{marginBottom: "2em"}}>
         <h2 className={styles.specTitle}>SPECIFICATION</h2>
-        <div style={{width: "100%", height: ".03em", background: "#CCCCCC" }}></div>
       </div>
       <ul>
+        <div style={{width: "100%", height: ".03em", background: "#CCCCCC" }}></div>
         { specification.map((spec, index) => (
           <li key={index}>
             <div className={styles.specItem}>
-              <p>{spec.name}</p>
-              <p>{spec.value}</p>
+              <div className={styles.specMame}>{spec.name}</div>
+              <p className={styles.specDescription}>{spec.value}</p>
             </div>
             <div style={{width: "100%", height: ".03em", background: "#CCCCCC" }}></div>
           </li>

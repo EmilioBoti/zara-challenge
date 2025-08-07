@@ -19,6 +19,14 @@
   padding: 1em;
 }
 
+.specMame {
+  text-transform: uppercase;
+}
+
+.specDescription {
+  text-transform: capitalize;
+}
+
 /* Desktop — 1024px and up */
 @media (min-width: 1024px) {
 
@@ -29,8 +37,4 @@
 }
 
 /* Tablet — 768px to 1023px */
-@media (min-width: 768px) and (max-width: 1023px) {
-  
-
-
-}
+@media (min-width: 768px) and (max-width: 1023px) {}
