@@ -22,6 +22,9 @@ export default function Header({
   return (
     <motion.header 
       className={styles.headerContainer}
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
     >
       <div className={styles.header}>
         <img

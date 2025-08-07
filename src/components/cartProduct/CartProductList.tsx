@@ -20,7 +20,13 @@ export default function CartProductList({ productStore, onRemoveProduct }: CartP
       </div>
       <ul className={styles.cartProducts}>
         { productStore.map((productStored, index) => (
-          <li key={index} className={styles.productItem}>
+          <motion.li 
+            key={index}
+            className={styles.productItem}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
             <img
               className={styles.productImage}
               src={productStored.imageUrl}
@@ -42,7 +48,7 @@ export default function CartProductList({ productStore, onRemoveProduct }: CartP
                 onClick={ (e) => onRemoveProduct(productStored) }
               >Delete</button>
             </div>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </motion.div>
