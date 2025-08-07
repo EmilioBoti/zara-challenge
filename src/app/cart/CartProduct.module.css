@@ -1,0 +1,34 @@
+.rootContent {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.footer {
+  padding: 1em;
+}
+
+/* Desktop — 1024px and up */
+@media (min-width: 1024px) {
+
+  .footer {
+    padding: 1em 6em;
+    display: grid;
+    
+  }
+
+
+}
+
+/* Tablet — 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) { }
+
+

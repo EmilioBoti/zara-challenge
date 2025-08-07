@@ -1,3 +1,5 @@
+'use client'
+
 import { ColorOption, ProductDetail, StorageOption } from "@/models/appModels/ProductDetail";
 import { ProductStore } from "@/models/appModels/ProductStore";
 import { ProductDetailState } from '../models/uiState/ProductDetailState'
@@ -6,10 +8,13 @@ import { useState, useEffect } from "react";
 import { ProductService } from '../services/ProductService'
 import { parseApiProductDetail } from '../utils/mappers/productMapper'
 import useCartProduct from "./useCartProduct";
+import { NavCart } from "../hooks/navigation/useNavigation"
+import useNavigation from "../hooks/navigation/useNavigation";
 
 export default function userProductDetail() {
   const productService = new ProductService()
-  const { storeProduct } = useCartProduct()
+  const { navigateTo } = useNavigation()
+  const { isStored, storeProduct } = useCartProduct()
   const [productDetailState, setProductDetailState] = useState<ProductDetailState>({
     product: new ProductDetail(),
     currentPrice: 0,
@@ -25,6 +30,12 @@ export default function userProductDetail() {
     productDetailState.currentColor,
     productDetailState.currentStorage
   ])
+
+  useEffect(() => {
+    if(isStored) {
+      navigateTo(new NavCart())
+    }
+  }, [isStored])
 
   const changeColor = (colorOption: ColorOption) => {
     setProductDetailState(

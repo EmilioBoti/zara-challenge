@@ -13,6 +13,10 @@ export class NavBack {
   constructor(){}
 }
 
+export class NavCart {
+  constructor() {}
+}
+
 export default function useNavigation() {
   const router = useRouter()
   const [navigate, setNavigate] = useState<Navigation>()
@@ -29,6 +33,9 @@ export default function useNavigation() {
       }
       if(navigate instanceof NavBack) {
         router.replace('/')
+      }
+      if(navigate instanceof NavCart) {
+        router.replace('/cart')
       }
     }
   },[navigate])
