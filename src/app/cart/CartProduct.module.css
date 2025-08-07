@@ -13,22 +13,89 @@
 }
 
 .footer {
-  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "price price"
+  "shopping pay";
+  justify-content: space-between;
+  gap: .4em;
+  padding: 1rem .5rem;
 }
+
+.footerContainer {
+  padding: 1rem .5rem;
+}
+
+.totalPrice { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  text-align: center;
+  border: 1px solid var(--black);
+  padding: 1em;
+  cursor: pointer;
+}
+
+.btnContinueShopping {
+  width: 100%;
+  grid-area: shopping;
+}
+
+.btnPay {
+  grid-area: pay;
+  color: var(--white);
+  background-color: var(--black);
+  animation: all .6s ease-in-out;
+}
+
+.btnPay:hover {
+  opacity: .7;
+}
+
+.footer > .totalPrice {
+  grid-area: price;
+}
+
+.footer > .btnShoppingContainer {
+  grid-area: shopping;
+}
+
+.footer > .btnPay {
+  grid-area: pay;
+}
+
 
 /* Desktop — 1024px and up */
 @media (min-width: 1024px) {
 
-  .footer {
+  .footerContainer {
     padding: 1em 6em;
-    display: grid;
-    
   }
 
+  .footer {
+    grid-template-columns: 1fr 200px 330px;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "shopping price pay";
+    justify-content: space-between;
+    gap: .4em;
+  }
+
+  .totalPrice {
+    justify-content: start;
+    gap: 3rem;
+  }
+
+  .btnContinueShopping {
+    width: 30%;
+  }
 
 }
-
-/* Tablet — 768px to 1023px */
-@media (min-width: 768px) and (max-width: 1023px) { }
 
 

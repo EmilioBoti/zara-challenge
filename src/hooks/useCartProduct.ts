@@ -5,6 +5,7 @@ import { ProductStore } from '../models/appModels/ProductStore'
 
 export default function useCartProduct() {
   const [productStore, setProductStore ]= useState<ProductStore[]>([])
+  const [totalPrice, setTotalPrice ]= useState<number>(0)
   const [isStored, setIsStored] = useState(false)
   const key = 'cartProducts'
   
@@ -13,6 +14,13 @@ export default function useCartProduct() {
     const dataSet = getCartProducts()
     setProductStore(dataSet)
   }, [])
+
+
+  useEffect(() => {
+    const total = productStore.map((pruduct) => pruduct.storageOption.price)
+    .reduce((acc, current) => acc + current, 0)
+    setTotalPrice(total)
+  }, [productStore])
 
   const storeProduct = (data: ProductStore) => {
     const products = localStorage.getItem(key)
@@ -58,6 +66,7 @@ export default function useCartProduct() {
   return {
     productStore,
     isStored,
+    totalPrice,
     storeProduct,
     getCartProducts,
     removeProduct
