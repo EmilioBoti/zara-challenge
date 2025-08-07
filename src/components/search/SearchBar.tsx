@@ -23,7 +23,7 @@ export default function SearchBar(
   useEffect(() => {
     let handler = setTimeout(() => {
       setDebouncedValue(value)
-    }, 500)
+    }, 200)
 
     return () => {
       clearTimeout(handler)
@@ -37,6 +37,9 @@ export default function SearchBar(
   return (
     <motion.div
       className={styles.searchContainer}
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
     >
       <div className={styles.searchInputContainer}>
         <input
