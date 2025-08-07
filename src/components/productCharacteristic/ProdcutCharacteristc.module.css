@@ -7,10 +7,16 @@
   gap: 2em;
 }
 
+.pruductImage {
+  width: 80%;
+  max-width: 400px;
+  align-self: center;
+}
+
 .infoContent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   gap: 1em;
   padding: .4em 1em;
@@ -74,6 +80,11 @@
     gap: 6em;
   }
 
+  .pruductImage {
+    max-width: 500px;
+  }
+
+
 }
 
 /* Tablet — 768px to 1023px */
@@ -86,4 +97,8 @@
     gap: 1em;
   }
 
+  .pruductImage {
+    max-width: 500px;
+  }
+  
 }

@@ -32,8 +32,9 @@ export default function ProdcutCharacteristc({
     >
       { productDetailState.currentColor && (
         <img
-        src={productDetailState.currentColor.imageUrl}
-        alt={productDetailState.product.name}
+          className={styles.pruductImage}
+          src={productDetailState.currentColor.imageUrl}
+          alt={productDetailState.product.name}
         />
       )}
       <div className={styles.infoContent}>
