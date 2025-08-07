@@ -29,7 +29,6 @@
   max-height: 400px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  cursor: pointer;
 }
 
 .productImage {
@@ -37,6 +36,7 @@
   max-height: 300px;
   align-self: center;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .itemInfo {

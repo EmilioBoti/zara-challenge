@@ -5,6 +5,7 @@ import { ProductStore } from '@/models/appModels/ProductStore'
 import { motion } from 'framer-motion'
 
 import styles from './CartProductList.module.css'
+import useNavigation, { NavProductDetail } from '@/hooks/navigation/useNavigation'
 
 
 type CartProductListProps = {
@@ -12,7 +13,11 @@ type CartProductListProps = {
   onRemoveProduct: (productStore: ProductStore) => void
 }
 
-export default function CartProductList({ productStore, onRemoveProduct }: CartProductListProps) {
+export default function CartProductList({ 
+  productStore, 
+  onRemoveProduct 
+}: CartProductListProps) {
+  const { navigateTo } = useNavigation() 
   return(
     <motion.div className={styles.products}>
       <div className={styles.titleContainer}>
@@ -23,9 +28,9 @@ export default function CartProductList({ productStore, onRemoveProduct }: CartP
           <motion.li 
             key={index}
             className={styles.productItem}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
             >
             <img
               className={styles.productImage}

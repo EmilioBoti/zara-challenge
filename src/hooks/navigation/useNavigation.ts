@@ -32,7 +32,7 @@ export default function useNavigation() {
         router.push(`/product?id=${nav.id}`)
       }
       if(navigate instanceof NavBack) {
-        router.replace('/')
+        router.back()
       }
       if(navigate instanceof NavCart) {
         router.replace('/cart')
