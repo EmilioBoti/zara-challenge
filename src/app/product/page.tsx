@@ -11,6 +11,7 @@ import { useSearchParams } from 'next/navigation'
 import { useRef, useEffect } from 'react'
 import userProductDetail from '../../hooks/userProductDetail'
 import useNavigation from '../../hooks/navigation/useNavigation'
+import useCartProduct from '@/hooks/useCartProduct'
 import { NavProductDetail } from '../../hooks/navigation/useNavigation'
 
 
@@ -18,6 +19,7 @@ export default function ProductDetail() {
   const content = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const { navigateTo } = useNavigation()
+  const { productStore} = useCartProduct()
   const productId = searchParams.get('id')
 
   const { 
@@ -45,7 +47,7 @@ export default function ProductDetail() {
 
   return (
     <motion.main className={styles.content}>
-      <Header itemCount={0} isBackVisible={true}/> 
+      <Header itemCount={productStore.length} isBackVisible={true}/> 
       <motion.div ref={content} className={styles.mainContent}>
         <ProdcutCharacteristc
           productDetailState={productDetailState}

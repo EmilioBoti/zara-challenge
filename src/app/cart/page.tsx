@@ -18,7 +18,11 @@ export default function CartProduct() {
 
   return(
     <motion.main className={styles.rootContent}>
-      <Header itemCount={0} isBackVisible={false}/> 
+      <Header 
+        itemCount={productStore.length}
+        isCartVisible={false}
+        isBackVisible={false}
+        /> 
       <motion.div className={styles.productContainer}>
         <CartProductList
           productStore={productStore}
@@ -29,8 +33,8 @@ export default function CartProduct() {
         <div className={productStore.length > 0 ? styles.footer : ''}>
           { productStore.length > 0 && (
             <div className={styles.totalPrice}>
-            <div>TOTAL</div>
-            <div>{totalPrice} EUR</div>
+            <div style={{fontWeight: "400"}}>TOTAL</div>
+            <div style={{fontWeight: "400"}}>{totalPrice} EUR</div>
           </div>
           )}
           <div className={styles.btnShoppingContainer}>
