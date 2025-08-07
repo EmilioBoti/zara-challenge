@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import StorageOptions from '../../components/storage/StorageOption'
 import ColorOptions from '../../components/color/ColorOptions'
+import { motion } from 'framer-motion'
 import { ColorOption, StorageOption } from '@/models/appModels/ProductDetail'
 import { ProductDetailState } from '@/models/uiState/ProductDetailState'
 import styles from './ProdcutCharacteristc.module.css'
@@ -23,7 +24,12 @@ export default function ProdcutCharacteristc({
 }: ProdcutCharacteristcProps
 ) {
   return (
-    <div className={styles.productSelection}>
+    <motion.div 
+      className={styles.productSelection}
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       { productDetailState.currentColor && (
         <Image
         src={productDetailState.currentColor.imageUrl}
@@ -54,6 +60,6 @@ export default function ProdcutCharacteristc({
           onClick={(e)=> addToCartButtonEvent() }
           >Add to Cart</button>
       </div>
-    </div>
+    </motion.div>
   )  
 }

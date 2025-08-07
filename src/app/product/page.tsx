@@ -65,7 +65,11 @@ export default function ProductDetail() {
           </div>
           <ul className={styles.similarProducts}>
             { productDetailState.product.similarProducts.map((product, index) => (
-              <li key={index}>
+              <motion.li key={index}
+                initial={{ opacity: 0, x: -2 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
                 <MobileCard
                   width='320px'
                   product={product}
@@ -73,7 +77,7 @@ export default function ProductDetail() {
                     navigateTo(new NavProductDetail(product.id))
                    } }
                 />
-              </li>
+              </motion.li>
             ))}
           </ul>
           <div></div>
