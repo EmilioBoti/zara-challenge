@@ -1,0 +1,19 @@
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 4px;
+  background: var(--black);
+  transform: translate(-50%, -50%) scaleX(0);
+  transform-origin: left;
+  animation: loading 1s ease-out forwards;
+  border-radius: 2px;
+  z-index: 9999;
+}
+
+@keyframes loading {
+  to {
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+}

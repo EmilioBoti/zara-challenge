@@ -3,6 +3,7 @@ import { useState } from "react"
 import { ProductService } from '../services/ProductService'
 import { ProductState } from '../models/uiState/ProductState'
 import { parserApiProduct } from '../utils/mappers/productMapper'
+import { Product } from "@/models/appModels/Product"
 
 export default function useProduct() {
   const productService: ProductService = new ProductService()
@@ -10,38 +11,34 @@ export default function useProduct() {
     products: [],
     itemCount: 0
   })
-  const [hasError, setHasError] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const getAllProducts = async () => {
+  const getProducts = async (id?: string, hasLoading: boolean = true) => {
+    setIsLoading(hasLoading)
     try {
-      let result = await productService.getAllProducts({limit: 20})
-      setProductsState({
-        products: parserApiProduct(result),
-        itemCount: 0
-      })
+      const result = await productService.getAllProducts({id: id, limit: 20})
+      const mappedResult = parserApiProduct(result)
+      updateProduct(mappedResult, id)
     } catch(error) {
-      setHasError(true)
+      updateProduct([])
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 500)
     }
   }
 
-  const getProduct = async (id: string) => {
-    try {
-      let result = await productService.getAllProducts({id: id, limit: 20})
-      let mappedResult = parserApiProduct(result)
-      setProductsState({
-        products: mappedResult,
-        itemCount: (id !== '') ? mappedResult.length : 0
-      })
-    } catch(error) {
-      setHasError(true)
-    }
+  const updateProduct = (product: Product[], productId?: string) => {
+    setProductsState({
+      products: product,
+      itemCount: (productId !== '' && productId) ? product.length : 0
+    })
   }
 
   return {
     productsState,
-    hasError,
-    getProduct,
-    getAllProducts
+    isLoading,
+    getProducts
   }
 
 }
