@@ -8,8 +8,7 @@ import { useState, useEffect } from "react";
 import { ProductService } from '../services/ProductService'
 import { parseApiProductDetail } from '../utils/mappers/productMapper'
 import useCartProduct from "./useCartProduct";
-import { NavCart } from "./navigation/useNavigation"
-import useNavigation from "./navigation/useNavigation";
+import useNavigation, { NavRoute } from "./navigation/useNavigation";
 
 
 export default function useProductDetail() {
@@ -31,7 +30,10 @@ export default function useProductDetail() {
 
   useEffect(() => {
     if(isStored) {
-      navigateTo(new NavCart())
+      navigateTo({
+        route: NavRoute.CART,
+        param: null
+      })
     }
   }, [isStored])
 

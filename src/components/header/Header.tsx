@@ -3,8 +3,7 @@
 import { motion } from 'framer-motion'
 
 import styles from './Header.module.css'
-import useNavigation from '../../hooks/navigation/useNavigation'
-import { NavBack, NavCart } from '../../hooks/navigation/useNavigation'
+import useNavigation, { NavRoute } from '../../hooks/navigation/useNavigation'
 
 type HeaderProps = {
   itemCount: number
@@ -35,7 +34,10 @@ export default function Header({
           alt='Logo'
         />
         { isCartVisible && (
-          <div className={styles.cartContainer} onClick={() => navigateTo(new NavCart())}>
+          <div className={styles.cartContainer} onClick={() => navigateTo({
+              route: NavRoute.CART,
+              param: null
+            })}>
             <img
               style={{
                 width: "auto",
@@ -54,7 +56,10 @@ export default function Header({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className={styles.backContainer} onClick={() => navigateTo(new NavBack())} >
+          <div className={styles.backContainer} onClick={() => navigateTo({
+              route: NavRoute.BACK,
+              param: null
+            })}>
             <img
               style={{
                 width: "auto",

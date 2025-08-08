@@ -5,7 +5,6 @@ import { ProductStore } from '@/models/appModels/ProductStore'
 import { motion } from 'framer-motion'
 
 import styles from './CartProductList.module.css'
-import useNavigation from '@/hooks/navigation/useNavigation'
 
 
 type CartProductListProps = {
@@ -17,7 +16,6 @@ export default function CartProductList({
   productStore, 
   onRemoveProduct 
 }: CartProductListProps) {
-  const { navigateTo } = useNavigation() 
   return(
     <motion.div className={styles.products}>
       <div className={styles.titleContainer}>

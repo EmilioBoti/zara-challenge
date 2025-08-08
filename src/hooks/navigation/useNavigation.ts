@@ -1,48 +1,45 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
 
-export interface Navigation {}
-
-export class NavProductDetail implements Navigation {
-  constructor(public id: string) {}
+export enum NavRoute {
+  HOME = '/',
+  CART  = '/cart',
+  PRODUCT_DETAIL  = '/product',
+  BACK  = ''
 }
 
-export class NavBack {
-  constructor(){}
+export interface NavData {
+  id: string | undefined | null
 }
 
-export class NavCart {
-  constructor() {}
+export interface Navigation {
+  route: NavRoute,
+  param: NavData | null | undefined
 }
 
 export default function useNavigation() {
   const router = useRouter()
-  const [navigate, setNavigate] = useState<Navigation>({})
 
-  const navigateTo = (nav: Navigation) => {
-    setNavigate(nav)
-  }
-
-  useEffect(() => {
-    if(navigate) {
-      if(navigate instanceof NavProductDetail) {
-        const nav: NavProductDetail = navigate as NavProductDetail
-        router.push(`/product?id=${nav.id}`)
-      }
-      if(navigate instanceof NavBack) {
+  const navigateTo = (navigate: Navigation) => {
+    switch(navigate.route) {
+      case NavRoute.HOME:
+        router.push(NavRoute.HOME)
+        break
+      case NavRoute.PRODUCT_DETAIL:
+        router.push(`${NavRoute.PRODUCT_DETAIL}?id=${navigate.param?.id}`)
+        break
+      case NavRoute.CART:
+        router.push(NavRoute.CART)
+        break
+      case NavRoute.BACK:
         router.back()
-      }
-      if(navigate instanceof NavCart) {
-        router.replace('/cart')
-      }
+        break
     }
-  },[navigate])
-
+  }
+  
   return {
     navigateTo
   }
-
 
 }

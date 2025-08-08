@@ -10,7 +10,7 @@ import styles from './Home.module.css'
 import useProduct from '@/hooks/useProduct'
 import { useEffect } from 'react'
 import { Product } from '@/models/appModels/Product'
-import useNavigation, { NavProductDetail } from '@/hooks/navigation/useNavigation'
+import useNavigation, { NavRoute } from '@/hooks/navigation/useNavigation'
 import useCartProduct from '@/hooks/useCartProduct'
 
 
@@ -42,7 +42,12 @@ export default function Home() {
         ) : (
           <ListProduct 
             items={productsState.products}
-            onClickEvent={ (product: Product) => { navigateTo(new NavProductDetail(product.id)) } }
+            onClickEvent={ (product: Product) => { navigateTo({
+              route: NavRoute.PRODUCT_DETAIL,
+              param: {
+                id: product.id
+              }
+            })}}
           />
         )}
       </motion.div>

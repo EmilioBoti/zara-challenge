@@ -1,15 +1,12 @@
 'use client'
 
 import { ProductStore } from '@/models/appModels/ProductStore'
-
 import styles from './CartProduct.module.css'
 import { motion } from 'framer-motion'
 import Header from '../../components/header/Header'
 import CartProductList from '../../components/cartProduct/CartProductList'
-
 import useCartProduct from '@/hooks/useCartProduct'
-import useNavigation from '@/hooks/navigation/useNavigation'
-import { NavBack } from '@/hooks/navigation/useNavigation'
+import useNavigation, { NavRoute } from '@/hooks/navigation/useNavigation'
 
 
 export default function CartProduct() {
@@ -40,7 +37,10 @@ export default function CartProduct() {
           <div className={styles.btnShoppingContainer}>
             <button 
               className={`${styles.btn} ${styles.btnContinueShopping}`}
-              onClick={ () => navigateTo(new NavBack())}
+              onClick={ () => navigateTo({
+                route: NavRoute.BACK,
+                param: null
+              })}
               >CONTINUE SHOPPING
               </button>
           </div>

@@ -10,9 +10,8 @@ import styles from './ProductDetail.module.css'
 import { useSearchParams } from 'next/navigation'
 import { useRef, useEffect } from 'react'
 import useProductDetail from '../../hooks/useProductDetail'
-import useNavigation from '../../hooks/navigation/useNavigation'
+import useNavigation, { NavRoute } from '../../hooks/navigation/useNavigation'
 import useCartProduct from '@/hooks/useCartProduct'
-import { NavProductDetail } from '../../hooks/navigation/useNavigation'
 
 
 export default function ProductDetail() {
@@ -74,7 +73,12 @@ export default function ProductDetail() {
                   width='320px'
                   product={product}
                   onClickEvent={(product: Product) => { 
-                    navigateTo(new NavProductDetail(product.id))
+                    navigateTo({
+                      route: NavRoute.PRODUCT_DETAIL,
+                      param: {
+                        id: product.id
+                      }
+                    })
                    } }
                 />
               </motion.li>
