@@ -40,7 +40,7 @@ export default function CartProduct() {
           <div className={styles.btnShoppingContainer}>
             <button 
               className={`${styles.btn} ${styles.btnContinueShopping}`}
-              onClick={ (e) => navigateTo(new NavBack())}
+              onClick={ () => navigateTo(new NavBack())}
               >CONTINUE SHOPPING
               </button>
           </div>

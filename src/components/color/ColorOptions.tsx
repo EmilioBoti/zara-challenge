@@ -24,7 +24,7 @@ export default function ColorOptions({
           <li 
             key={index} 
             className={`${styles.colorOption} ${colorSelected?.hexCode === colorOption.hexCode ? styles.selected : ''}`} 
-            onClick={(e) => { onColorSelected(colorOption) }}
+            onClick={() => { onColorSelected(colorOption) }}
           >
             <div className={styles.color} style={{backgroundColor: colorOption.hexCode}}></div>
           </li>

@@ -26,7 +26,7 @@ export default function SearchBar(
    * wait typing stop to request the data
    */
   useEffect(() => {
-    let handler = setTimeout(() => {
+    const handler = setTimeout(() => {
       setDebouncedValue(value.result)
     }, 200)
 
@@ -64,7 +64,7 @@ export default function SearchBar(
         { (value.result !== '') && (
           <motion.div
             className={styles.clearInput}
-            onClick={(e) => updateValue(true, '')}
+            onClick={() => updateValue(true, '')}
           >
             <Image
               src='/ic_cross.svg'

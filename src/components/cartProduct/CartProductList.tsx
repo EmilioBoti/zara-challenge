@@ -5,7 +5,7 @@ import { ProductStore } from '@/models/appModels/ProductStore'
 import { motion } from 'framer-motion'
 
 import styles from './CartProductList.module.css'
-import useNavigation, { NavProductDetail } from '@/hooks/navigation/useNavigation'
+import useNavigation from '@/hooks/navigation/useNavigation'
 
 
 type CartProductListProps = {
@@ -50,7 +50,7 @@ export default function CartProductList({
                   color: "var(--delete-color)",
                   cursor: "pointer"
                 }}
-                onClick={ (e) => onRemoveProduct(productStored) }
+                onClick={ () => onRemoveProduct(productStored) }
               >Delete</button>
             </div>
           </motion.li>

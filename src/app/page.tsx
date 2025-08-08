@@ -38,7 +38,7 @@ export default function Home() {
       />
       <motion.div className={styles.container}>
         { isLoading ? (  
-          <Loader isLoading={isLoading}/> 
+          <Loader/> 
         ) : (
           <ListProduct 
             items={productsState.products}

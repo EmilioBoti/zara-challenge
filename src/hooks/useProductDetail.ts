@@ -8,10 +8,11 @@ import { useState, useEffect } from "react";
 import { ProductService } from '../services/ProductService'
 import { parseApiProductDetail } from '../utils/mappers/productMapper'
 import useCartProduct from "./useCartProduct";
-import { NavCart } from "../hooks/navigation/useNavigation"
-import useNavigation from "../hooks/navigation/useNavigation";
+import { NavCart } from "./navigation/useNavigation"
+import useNavigation from "./navigation/useNavigation";
 
-export default function userProductDetail() {
+
+export default function useProductDetail() {
   const productService = new ProductService()
   const { navigateTo } = useNavigation()
   const { isStored, storeProduct } = useCartProduct()
@@ -24,12 +25,9 @@ export default function userProductDetail() {
   const [isDisabledButton, setIsDisabledButton] = useState(true);
 
   useEffect(() => {
-    let disable = !isValidProduct(productDetailState)
+    const disable = !isValidProduct(productDetailState)
     setIsDisabledButton(disable)
-  },[
-    productDetailState.currentColor,
-    productDetailState.currentStorage
-  ])
+  },[productDetailState])
 
   useEffect(() => {
     if(isStored) {
@@ -57,15 +55,15 @@ export default function userProductDetail() {
   }
 
   const addToCartButtonEvent = () => {
-    if(isValidProduct(productDetailState)) {
+    if((productDetailState.currentColor !== undefined && productDetailState.currentStorage !== undefined)) {
       const productStore: ProductStore = {
         id: productDetailState.product.id,
         brand: productDetailState.product.brand,
         name: productDetailState.product.name,
         basePrice: productDetailState.product.basePrice,
-        storageOption: productDetailState.currentStorage!!,
-        colorOption: productDetailState.currentColor!!,
-        imageUrl: productDetailState.currentColor?.imageUrl!!
+        storageOption: productDetailState.currentStorage,
+        colorOption: productDetailState.currentColor,
+        imageUrl: productDetailState.currentColor?.imageUrl
       }
       storeProduct(productStore)
     }
@@ -78,7 +76,6 @@ export default function userProductDetail() {
 
   const getProductDetail = async (id: string) => {
     try {
-      console.log("loading...")
       const result = await productService.getProductDetail({id: id})
       const parsedResult = parseApiProductDetail(result)
       setProductDetailState(
@@ -91,8 +88,6 @@ export default function userProductDetail() {
       )
     } catch(error) {
       console.log(error)
-    } finally {
-      console.log("loaded")
     }
   }
 

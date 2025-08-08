@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import StorageOptions from '../../components/storage/StorageOption'
 import ColorOptions from '../../components/color/ColorOptions'
 import { motion } from 'framer-motion'
@@ -55,7 +54,7 @@ export default function ProdcutCharacteristc({
         <button
           disabled={isDisabledButton}
           className={`${styles.addToCartButton} ${(isDisabledButton) ? styles.idle : styles.active}`}
-          onClick={(e)=> addToCartButtonEvent() }
+          onClick={()=> addToCartButtonEvent() }
           >Add to Cart</button>
       </div>
     </motion.div>

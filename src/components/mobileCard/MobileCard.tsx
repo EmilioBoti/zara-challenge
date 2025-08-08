@@ -19,7 +19,7 @@ export default function MobileCard({
     <motion.div
       className={styles.cardContainer}
       style={{ width: width, height: "100%"}}
-      onClick={(e) => { onClickEvent(product) }}
+      onClick={() => { onClickEvent(product) }}
     >
       <div className={styles.productImageContainer}>
         <img

@@ -24,7 +24,7 @@ export default function StorageOptions({
             className={`${styles.storage} ${
               storageSelected?.capacity === storage.capacity ? styles.selected : ''
             }`}
-            onClick={(e) => onStorageChanged(storage)}
+            onClick={() => onStorageChanged(storage)}
           >
             <p>{storage.capacity}</p>
           </li>

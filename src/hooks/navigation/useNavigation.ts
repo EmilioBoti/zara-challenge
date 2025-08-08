@@ -19,7 +19,7 @@ export class NavCart {
 
 export default function useNavigation() {
   const router = useRouter()
-  const [navigate, setNavigate] = useState<Navigation>()
+  const [navigate, setNavigate] = useState<Navigation>({})
 
   const navigateTo = (nav: Navigation) => {
     setNavigate(nav)

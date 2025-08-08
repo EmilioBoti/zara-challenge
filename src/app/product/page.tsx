@@ -9,7 +9,7 @@ import MobileCard from '../../components/mobileCard/MobileCard'
 import styles from './ProductDetail.module.css'
 import { useSearchParams } from 'next/navigation'
 import { useRef, useEffect } from 'react'
-import userProductDetail from '../../hooks/userProductDetail'
+import useProductDetail from '../../hooks/useProductDetail'
 import useNavigation from '../../hooks/navigation/useNavigation'
 import useCartProduct from '@/hooks/useCartProduct'
 import { NavProductDetail } from '../../hooks/navigation/useNavigation'
@@ -29,7 +29,7 @@ export default function ProductDetail() {
     addToCartButtonEvent,
     changeColor,
     changeStorage
-   } = userProductDetail()
+   } = useProductDetail()
 
   useEffect(() => {
     if(productId) { 

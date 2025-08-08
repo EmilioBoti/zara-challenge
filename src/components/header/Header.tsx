@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 import styles from './Header.module.css'
 import useNavigation from '../../hooks/navigation/useNavigation'
@@ -36,7 +35,7 @@ export default function Header({
           alt='Logo'
         />
         { isCartVisible && (
-          <div className={styles.cartContainer} onClick={(e) => navigateTo(new NavCart())}>
+          <div className={styles.cartContainer} onClick={() => navigateTo(new NavCart())}>
             <img
               style={{
                 width: "auto",
@@ -55,7 +54,7 @@ export default function Header({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className={styles.backContainer} onClick={(e) => navigateTo(new NavBack())} >
+          <div className={styles.backContainer} onClick={() => navigateTo(new NavBack())} >
             <img
               style={{
                 width: "auto",

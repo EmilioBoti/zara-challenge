@@ -4,9 +4,9 @@ export class ApiService {
     endPonit: string,
     options: RequestInit = {}
   ): Promise<T> {
-    let url: string = `${process.env.NEXT_PUBLIC_BASE_URL}${endPonit}`
+    const url: string = `${process.env.NEXT_PUBLIC_BASE_URL}${endPonit}`
 
-    let configs: RequestInit = {
+    const configs: RequestInit = {
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
@@ -16,13 +16,12 @@ export class ApiService {
     }
 
     try {
-      let response = await fetch(url, configs)
+      const response = await fetch(url, configs)
 
       if(!response.ok) {
         throw Error(`HTTP error! status: ${response.status}`)
       }
-      let data = await response.json()
-      return data
+      return await response.json()
     } catch(error) {
       throw error
     }
@@ -35,7 +34,7 @@ export class ApiService {
   }
 
   // POST request
-  async post<T>(endpoint: string, data: any): Promise<T> {
+  async post<T>(endpoint: string, data: T): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -43,7 +42,7 @@ export class ApiService {
   }
 
   // PUT request
-  async put<T>(endpoint: string, data: any): Promise<T> {
+  async put<T>(endpoint: string, data: T): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'PUT',
       body: JSON.stringify(data),
