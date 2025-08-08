@@ -15,6 +15,7 @@ export default function useProductDetail() {
   const productService = new ProductService()
   const { navigateTo } = useNavigation()
   const { isStored, storeProduct } = useCartProduct()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [productDetailState, setProductDetailState] = useState<ProductDetailState>({
     product: new ProductDetail(),
     currentPrice: 0,
@@ -78,6 +79,7 @@ export default function useProductDetail() {
 
   const getProductDetail = async (id: string) => {
     try {
+      setIsLoading(true)
       const result = await productService.getProductDetail({id: id})
       const parsedResult = parseApiProductDetail(result)
       setProductDetailState(
@@ -90,11 +92,16 @@ export default function useProductDetail() {
       )
     } catch(error) {
       console.log(error)
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 500)
     }
   }
 
   return {
     productDetailState,
+    isLoading,
     isDisabledButton,
     getProductDetail,
     changeColor,
