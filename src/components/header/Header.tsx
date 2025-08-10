@@ -34,10 +34,14 @@ export default function Header({
           alt='Logo'
         />
         { isCartVisible && (
-          <div className={styles.cartContainer} onClick={() => navigateTo({
+          <div 
+            data-testid="cart-count"
+            className={styles.cartContainer} 
+            onClick={() => navigateTo({
               route: NavRoute.CART,
               param: null
-            })}>
+            })}
+            >
             <img
               style={{
                 width: "auto",
@@ -52,6 +56,7 @@ export default function Header({
       </div>
       { isBackVisible && (
         <motion.div
+          data-testid='goBack'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
