@@ -3,7 +3,7 @@ import styles from './MobileCard.module.css'
 import { motion } from 'framer-motion'
 import { Product } from '../../models/appModels/Product'
 
-type MobileCardProps = {
+export type MobileCardProps = {
   width?: string,
   product: Product,
   onClickEvent: (product: Product) => void
@@ -17,6 +17,7 @@ export default function MobileCard({
 ) {
   return (
     <motion.div
+      data-testid='card-product'
       className={styles.cardContainer}
       style={{ width: width, height: "100%"}}
       onClick={() => { onClickEvent(product) }}

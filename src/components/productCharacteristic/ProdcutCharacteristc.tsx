@@ -23,7 +23,8 @@ export default function ProdcutCharacteristc({
 }: ProdcutCharacteristcProps
 ) {
   return (
-    <motion.div 
+    <motion.div
+      data-testid='product-characteristics'
       className={styles.productSelection}
       initial={{ opacity: 0, y: -5 }}
       animate={{ opacity: 1, y: 0 }}
@@ -32,7 +33,7 @@ export default function ProdcutCharacteristc({
       { productDetailState.currentColor && (
         <img
           className={styles.pruductImage}
-          src={productDetailState.currentColor.imageUrl}
+          src={(productDetailState.currentColor.imageUrl !== '') ? productDetailState.currentColor.imageUrl : '/mobile.jpg'}
           alt={productDetailState.product.name}
         />
       )}
